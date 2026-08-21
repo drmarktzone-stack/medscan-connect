@@ -112,10 +112,10 @@ function Dashboard() {
             <h2 className="text-lg font-semibold">נפח ניתוחים שבועי</h2>
             <div className="mt-6 flex h-52 items-end gap-3">
               {weeklyVolume.map((d) => (
-                <div key={d.label} className="flex flex-1 flex-col items-center gap-2">
+                <div key={d.label} className="flex h-full flex-1 flex-col items-center justify-end gap-2">
                   <div
-                    className="w-full rounded-t-xl border border-border bg-linear-to-t from-aurora-blue/30 via-aurora-violet/60 to-aurora-pink/80 backdrop-blur-xl"
-                    style={{ height: `${(d.value / max) * 100}%` }}
+                    className="w-full min-h-2 rounded-t-xl border border-border bg-linear-to-t from-aurora-blue/40 via-aurora-violet/70 to-aurora-pink/90 backdrop-blur-xl"
+                    style={{ height: `${Math.round((d.value / max) * 88)}%` }}
                   />
                   <span className="text-xs text-muted-foreground">{d.label}</span>
                 </div>
