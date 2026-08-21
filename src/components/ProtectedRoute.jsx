@@ -11,7 +11,8 @@ const DefaultFallback = () => (
   </div>
 );
 
-export default function ProtectedRoute({ fallback = <DefaultFallback />, unauthenticatedElement }) {
+export default function ProtectedRoute({ fallback = <DefaultFallback />, unauthenticatedElement, children }) {
+  const content = children ?? <Outlet />;
   const { isAuthenticated, isLoadingAuth, authChecked, authError, checkUserAuth } = useAuth();
 
   useEffect(() => {
@@ -21,7 +22,7 @@ export default function ProtectedRoute({ fallback = <DefaultFallback />, unauthe
   }, [authChecked, isLoadingAuth, checkUserAuth]);
 
   if (isLocalClinicSession({ appId: appParams.appId, token: appParams.token })) {
-    return <Outlet />;
+    return content;
   }
 
   if (isLoadingAuth || !authChecked) {
@@ -39,5 +40,5 @@ export default function ProtectedRoute({ fallback = <DefaultFallback />, unauthe
     return unauthenticatedElement;
   }
 
-  return <Outlet />;
+  return content;
 }
