@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AppRouteImport } from './routes/_app'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
@@ -49,6 +50,10 @@ import { Route as AppTraumaRouteImport } from './routes/_app/trauma'
 import { Route as AppUsRouteImport } from './routes/_app/us'
 import { Route as AppVerifyRouteImport } from './routes/_app/verify'
 
+const AppRoute = AppRouteImport.update({
+  id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
   id: '/forgot-password',
   path: '/forgot-password',
@@ -70,182 +75,183 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppIndexRoute = AppIndexRouteImport.update({
-  id: '/_app/',
+  id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppAudioRoute = AppAudioRouteImport.update({
-  id: '/_app/audio',
+  id: '/audio',
   path: '/audio',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppBookRoute = AppBookRouteImport.update({
-  id: '/_app/book',
+  id: '/book',
   path: '/book',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppChronicRoute = AppChronicRouteImport.update({
-  id: '/_app/chronic',
+  id: '/chronic',
   path: '/chronic',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppCsfRoute = AppCsfRouteImport.update({
-  id: '/_app/csf',
+  id: '/csf',
   path: '/csf',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppDifferentialRoute = AppDifferentialRouteImport.update({
-  id: '/_app/differential',
+  id: '/differential',
   path: '/differential',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppDoctorpedRoute = AppDoctorpedRouteImport.update({
-  id: '/_app/doctorped',
+  id: '/doctorped',
   path: '/doctorped',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppEcgRoute = AppEcgRouteImport.update({
-  id: '/_app/ecg',
+  id: '/ecg',
   path: '/ecg',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppEcgCompareRoute = AppEcgCompareRouteImport.update({
-  id: '/_app/ecg-compare',
+  id: '/ecg-compare',
   path: '/ecg-compare',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppEcgValidateRoute = AppEcgValidateRouteImport.update({
-  id: '/_app/ecg-validate',
+  id: '/ecg-validate',
   path: '/ecg-validate',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppEegRoute = AppEegRouteImport.update({
-  id: '/_app/eeg',
+  id: '/eeg',
   path: '/eeg',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppEvaluationRoute = AppEvaluationRouteImport.update({
-  id: '/_app/evaluation',
+  id: '/evaluation',
   path: '/evaluation',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppGeneticsRoute = AppGeneticsRouteImport.update({
-  id: '/_app/genetics',
+  id: '/genetics',
   path: '/genetics',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppGrowthRoute = AppGrowthRouteImport.update({
-  id: '/_app/growth',
+  id: '/growth',
   path: '/growth',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppHistoryRoute = AppHistoryRouteImport.update({
-  id: '/_app/history',
+  id: '/history',
   path: '/history',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppKnowledgeAdminRoute = AppKnowledgeAdminRouteImport.update({
-  id: '/_app/knowledge-admin',
+  id: '/knowledge-admin',
   path: '/knowledge-admin',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppKnowledgeBaseRoute = AppKnowledgeBaseRouteImport.update({
-  id: '/_app/knowledge-base',
+  id: '/knowledge-base',
   path: '/knowledge-base',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppKnowledgeCoverageRoute = AppKnowledgeCoverageRouteImport.update({
-  id: '/_app/knowledge-coverage',
+  id: '/knowledge-coverage',
   path: '/knowledge-coverage',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppKnowledgeImportRoute = AppKnowledgeImportRouteImport.update({
-  id: '/_app/knowledge-import',
+  id: '/knowledge-import',
   path: '/knowledge-import',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppLabsRoute = AppLabsRouteImport.update({
-  id: '/_app/labs',
+  id: '/labs',
   path: '/labs',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppMetabolicRoute = AppMetabolicRouteImport.update({
-  id: '/_app/metabolic',
+  id: '/metabolic',
   path: '/metabolic',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppNeurodevRoute = AppNeurodevRouteImport.update({
-  id: '/_app/neurodev',
+  id: '/neurodev',
   path: '/neurodev',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppNutritionRoute = AppNutritionRouteImport.update({
-  id: '/_app/nutrition',
+  id: '/nutrition',
   path: '/nutrition',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppParentRoute = AppParentRouteImport.update({
-  id: '/_app/parent',
+  id: '/parent',
   path: '/parent',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppPatientContextRoute = AppPatientContextRouteImport.update({
-  id: '/_app/patient-context',
+  id: '/patient-context',
   path: '/patient-context',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppProtocolsRoute = AppProtocolsRouteImport.update({
-  id: '/_app/protocols',
+  id: '/protocols',
   path: '/protocols',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppRadiologyRoute = AppRadiologyRouteImport.update({
-  id: '/_app/radiology',
+  id: '/radiology',
   path: '/radiology',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppReferralsRoute = AppReferralsRouteImport.update({
-  id: '/_app/referrals',
+  id: '/referrals',
   path: '/referrals',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppSkinRoute = AppSkinRouteImport.update({
-  id: '/_app/skin',
+  id: '/skin',
   path: '/skin',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppSkinValidateRoute = AppSkinValidateRouteImport.update({
-  id: '/_app/skin-validate',
+  id: '/skin-validate',
   path: '/skin-validate',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppSyndromesRoute = AppSyndromesRouteImport.update({
-  id: '/_app/syndromes',
+  id: '/syndromes',
   path: '/syndromes',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppToxRoute = AppToxRouteImport.update({
-  id: '/_app/tox',
+  id: '/tox',
   path: '/tox',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppTraumaRoute = AppTraumaRouteImport.update({
-  id: '/_app/trauma',
+  id: '/trauma',
   path: '/trauma',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppUsRoute = AppUsRouteImport.update({
-  id: '/_app/us',
+  id: '/us',
   path: '/us',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 const AppVerifyRoute = AppVerifyRouteImport.update({
-  id: '/_app/verify',
+  id: '/verify',
   path: '/verify',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof AppIndexRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
@@ -284,7 +290,6 @@ export interface FileRoutesByFullPath {
   '/trauma': typeof AppTraumaRoute
   '/us': typeof AppUsRoute
   '/verify': typeof AppVerifyRoute
-  '/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/forgot-password': typeof ForgotPasswordRoute
@@ -329,6 +334,7 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/_app': typeof AppRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
@@ -372,6 +378,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/'
     | '/forgot-password'
     | '/login'
     | '/register'
@@ -410,7 +417,6 @@ export interface FileRouteTypes {
     | '/trauma'
     | '/us'
     | '/verify'
-    | '/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/forgot-password'
@@ -454,6 +460,7 @@ export interface FileRouteTypes {
     | '/'
   id:
     | '__root__'
+    | '/_app'
     | '/forgot-password'
     | '/login'
     | '/register'
@@ -496,10 +503,299 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  AppRoute: typeof AppRouteWithChildren
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
+}
+
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/': {
+      id: '/_app/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/audio': {
+      id: '/_app/audio'
+      path: '/audio'
+      fullPath: '/audio'
+      preLoaderRoute: typeof AppAudioRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/book': {
+      id: '/_app/book'
+      path: '/book'
+      fullPath: '/book'
+      preLoaderRoute: typeof AppBookRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/chronic': {
+      id: '/_app/chronic'
+      path: '/chronic'
+      fullPath: '/chronic'
+      preLoaderRoute: typeof AppChronicRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/csf': {
+      id: '/_app/csf'
+      path: '/csf'
+      fullPath: '/csf'
+      preLoaderRoute: typeof AppCsfRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/differential': {
+      id: '/_app/differential'
+      path: '/differential'
+      fullPath: '/differential'
+      preLoaderRoute: typeof AppDifferentialRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/doctorped': {
+      id: '/_app/doctorped'
+      path: '/doctorped'
+      fullPath: '/doctorped'
+      preLoaderRoute: typeof AppDoctorpedRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/ecg': {
+      id: '/_app/ecg'
+      path: '/ecg'
+      fullPath: '/ecg'
+      preLoaderRoute: typeof AppEcgRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/ecg-compare': {
+      id: '/_app/ecg-compare'
+      path: '/ecg-compare'
+      fullPath: '/ecg-compare'
+      preLoaderRoute: typeof AppEcgCompareRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/ecg-validate': {
+      id: '/_app/ecg-validate'
+      path: '/ecg-validate'
+      fullPath: '/ecg-validate'
+      preLoaderRoute: typeof AppEcgValidateRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/eeg': {
+      id: '/_app/eeg'
+      path: '/eeg'
+      fullPath: '/eeg'
+      preLoaderRoute: typeof AppEegRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/evaluation': {
+      id: '/_app/evaluation'
+      path: '/evaluation'
+      fullPath: '/evaluation'
+      preLoaderRoute: typeof AppEvaluationRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/genetics': {
+      id: '/_app/genetics'
+      path: '/genetics'
+      fullPath: '/genetics'
+      preLoaderRoute: typeof AppGeneticsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/growth': {
+      id: '/_app/growth'
+      path: '/growth'
+      fullPath: '/growth'
+      preLoaderRoute: typeof AppGrowthRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/history': {
+      id: '/_app/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof AppHistoryRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/knowledge-admin': {
+      id: '/_app/knowledge-admin'
+      path: '/knowledge-admin'
+      fullPath: '/knowledge-admin'
+      preLoaderRoute: typeof AppKnowledgeAdminRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/knowledge-base': {
+      id: '/_app/knowledge-base'
+      path: '/knowledge-base'
+      fullPath: '/knowledge-base'
+      preLoaderRoute: typeof AppKnowledgeBaseRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/knowledge-coverage': {
+      id: '/_app/knowledge-coverage'
+      path: '/knowledge-coverage'
+      fullPath: '/knowledge-coverage'
+      preLoaderRoute: typeof AppKnowledgeCoverageRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/knowledge-import': {
+      id: '/_app/knowledge-import'
+      path: '/knowledge-import'
+      fullPath: '/knowledge-import'
+      preLoaderRoute: typeof AppKnowledgeImportRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/labs': {
+      id: '/_app/labs'
+      path: '/labs'
+      fullPath: '/labs'
+      preLoaderRoute: typeof AppLabsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/metabolic': {
+      id: '/_app/metabolic'
+      path: '/metabolic'
+      fullPath: '/metabolic'
+      preLoaderRoute: typeof AppMetabolicRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/neurodev': {
+      id: '/_app/neurodev'
+      path: '/neurodev'
+      fullPath: '/neurodev'
+      preLoaderRoute: typeof AppNeurodevRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/nutrition': {
+      id: '/_app/nutrition'
+      path: '/nutrition'
+      fullPath: '/nutrition'
+      preLoaderRoute: typeof AppNutritionRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/parent': {
+      id: '/_app/parent'
+      path: '/parent'
+      fullPath: '/parent'
+      preLoaderRoute: typeof AppParentRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/patient-context': {
+      id: '/_app/patient-context'
+      path: '/patient-context'
+      fullPath: '/patient-context'
+      preLoaderRoute: typeof AppPatientContextRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/protocols': {
+      id: '/_app/protocols'
+      path: '/protocols'
+      fullPath: '/protocols'
+      preLoaderRoute: typeof AppProtocolsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/radiology': {
+      id: '/_app/radiology'
+      path: '/radiology'
+      fullPath: '/radiology'
+      preLoaderRoute: typeof AppRadiologyRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/referrals': {
+      id: '/_app/referrals'
+      path: '/referrals'
+      fullPath: '/referrals'
+      preLoaderRoute: typeof AppReferralsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/skin': {
+      id: '/_app/skin'
+      path: '/skin'
+      fullPath: '/skin'
+      preLoaderRoute: typeof AppSkinRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/skin-validate': {
+      id: '/_app/skin-validate'
+      path: '/skin-validate'
+      fullPath: '/skin-validate'
+      preLoaderRoute: typeof AppSkinValidateRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/syndromes': {
+      id: '/_app/syndromes'
+      path: '/syndromes'
+      fullPath: '/syndromes'
+      preLoaderRoute: typeof AppSyndromesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/tox': {
+      id: '/_app/tox'
+      path: '/tox'
+      fullPath: '/tox'
+      preLoaderRoute: typeof AppToxRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/trauma': {
+      id: '/_app/trauma'
+      path: '/trauma'
+      fullPath: '/trauma'
+      preLoaderRoute: typeof AppTraumaRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/us': {
+      id: '/_app/us'
+      path: '/us'
+      fullPath: '/us'
+      preLoaderRoute: typeof AppUsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/verify': {
+      id: '/_app/verify'
+      path: '/verify'
+      fullPath: '/verify'
+      preLoaderRoute: typeof AppVerifyRouteImport
+      parentRoute: typeof AppRoute
+    }
+  }
+}
+
+interface AppRouteChildren {
   AppAudioRoute: typeof AppAudioRoute
   AppBookRoute: typeof AppBookRoute
   AppChronicRoute: typeof AppChronicRoute
@@ -537,289 +833,7 @@ export interface RootRouteChildren {
   AppIndexRoute: typeof AppIndexRoute
 }
 
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/forgot-password': {
-      id: '/forgot-password'
-      path: '/forgot-password'
-      fullPath: '/forgot-password'
-      preLoaderRoute: typeof ForgotPasswordRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/register': {
-      id: '/register'
-      path: '/register'
-      fullPath: '/register'
-      preLoaderRoute: typeof RegisterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/reset-password': {
-      id: '/reset-password'
-      path: '/reset-password'
-      fullPath: '/reset-password'
-      preLoaderRoute: typeof ResetPasswordRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/': {
-      id: '/_app/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof AppIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/audio': {
-      id: '/_app/audio'
-      path: '/audio'
-      fullPath: '/audio'
-      preLoaderRoute: typeof AppAudioRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/book': {
-      id: '/_app/book'
-      path: '/book'
-      fullPath: '/book'
-      preLoaderRoute: typeof AppBookRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/chronic': {
-      id: '/_app/chronic'
-      path: '/chronic'
-      fullPath: '/chronic'
-      preLoaderRoute: typeof AppChronicRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/csf': {
-      id: '/_app/csf'
-      path: '/csf'
-      fullPath: '/csf'
-      preLoaderRoute: typeof AppCsfRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/differential': {
-      id: '/_app/differential'
-      path: '/differential'
-      fullPath: '/differential'
-      preLoaderRoute: typeof AppDifferentialRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/doctorped': {
-      id: '/_app/doctorped'
-      path: '/doctorped'
-      fullPath: '/doctorped'
-      preLoaderRoute: typeof AppDoctorpedRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/ecg': {
-      id: '/_app/ecg'
-      path: '/ecg'
-      fullPath: '/ecg'
-      preLoaderRoute: typeof AppEcgRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/ecg-compare': {
-      id: '/_app/ecg-compare'
-      path: '/ecg-compare'
-      fullPath: '/ecg-compare'
-      preLoaderRoute: typeof AppEcgCompareRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/ecg-validate': {
-      id: '/_app/ecg-validate'
-      path: '/ecg-validate'
-      fullPath: '/ecg-validate'
-      preLoaderRoute: typeof AppEcgValidateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/eeg': {
-      id: '/_app/eeg'
-      path: '/eeg'
-      fullPath: '/eeg'
-      preLoaderRoute: typeof AppEegRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/evaluation': {
-      id: '/_app/evaluation'
-      path: '/evaluation'
-      fullPath: '/evaluation'
-      preLoaderRoute: typeof AppEvaluationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/genetics': {
-      id: '/_app/genetics'
-      path: '/genetics'
-      fullPath: '/genetics'
-      preLoaderRoute: typeof AppGeneticsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/growth': {
-      id: '/_app/growth'
-      path: '/growth'
-      fullPath: '/growth'
-      preLoaderRoute: typeof AppGrowthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/history': {
-      id: '/_app/history'
-      path: '/history'
-      fullPath: '/history'
-      preLoaderRoute: typeof AppHistoryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/knowledge-admin': {
-      id: '/_app/knowledge-admin'
-      path: '/knowledge-admin'
-      fullPath: '/knowledge-admin'
-      preLoaderRoute: typeof AppKnowledgeAdminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/knowledge-base': {
-      id: '/_app/knowledge-base'
-      path: '/knowledge-base'
-      fullPath: '/knowledge-base'
-      preLoaderRoute: typeof AppKnowledgeBaseRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/knowledge-coverage': {
-      id: '/_app/knowledge-coverage'
-      path: '/knowledge-coverage'
-      fullPath: '/knowledge-coverage'
-      preLoaderRoute: typeof AppKnowledgeCoverageRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/knowledge-import': {
-      id: '/_app/knowledge-import'
-      path: '/knowledge-import'
-      fullPath: '/knowledge-import'
-      preLoaderRoute: typeof AppKnowledgeImportRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/labs': {
-      id: '/_app/labs'
-      path: '/labs'
-      fullPath: '/labs'
-      preLoaderRoute: typeof AppLabsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/metabolic': {
-      id: '/_app/metabolic'
-      path: '/metabolic'
-      fullPath: '/metabolic'
-      preLoaderRoute: typeof AppMetabolicRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/neurodev': {
-      id: '/_app/neurodev'
-      path: '/neurodev'
-      fullPath: '/neurodev'
-      preLoaderRoute: typeof AppNeurodevRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/nutrition': {
-      id: '/_app/nutrition'
-      path: '/nutrition'
-      fullPath: '/nutrition'
-      preLoaderRoute: typeof AppNutritionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/parent': {
-      id: '/_app/parent'
-      path: '/parent'
-      fullPath: '/parent'
-      preLoaderRoute: typeof AppParentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/patient-context': {
-      id: '/_app/patient-context'
-      path: '/patient-context'
-      fullPath: '/patient-context'
-      preLoaderRoute: typeof AppPatientContextRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/protocols': {
-      id: '/_app/protocols'
-      path: '/protocols'
-      fullPath: '/protocols'
-      preLoaderRoute: typeof AppProtocolsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/radiology': {
-      id: '/_app/radiology'
-      path: '/radiology'
-      fullPath: '/radiology'
-      preLoaderRoute: typeof AppRadiologyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/referrals': {
-      id: '/_app/referrals'
-      path: '/referrals'
-      fullPath: '/referrals'
-      preLoaderRoute: typeof AppReferralsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/skin': {
-      id: '/_app/skin'
-      path: '/skin'
-      fullPath: '/skin'
-      preLoaderRoute: typeof AppSkinRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/skin-validate': {
-      id: '/_app/skin-validate'
-      path: '/skin-validate'
-      fullPath: '/skin-validate'
-      preLoaderRoute: typeof AppSkinValidateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/syndromes': {
-      id: '/_app/syndromes'
-      path: '/syndromes'
-      fullPath: '/syndromes'
-      preLoaderRoute: typeof AppSyndromesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/tox': {
-      id: '/_app/tox'
-      path: '/tox'
-      fullPath: '/tox'
-      preLoaderRoute: typeof AppToxRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/trauma': {
-      id: '/_app/trauma'
-      path: '/trauma'
-      fullPath: '/trauma'
-      preLoaderRoute: typeof AppTraumaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/us': {
-      id: '/_app/us'
-      path: '/us'
-      fullPath: '/us'
-      preLoaderRoute: typeof AppUsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/verify': {
-      id: '/_app/verify'
-      path: '/verify'
-      fullPath: '/verify'
-      preLoaderRoute: typeof AppVerifyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-  }
-}
-
-const rootRouteChildren: RootRouteChildren = {
-  ForgotPasswordRoute: ForgotPasswordRoute,
-  LoginRoute: LoginRoute,
-  RegisterRoute: RegisterRoute,
-  ResetPasswordRoute: ResetPasswordRoute,
+const AppRouteChildren: AppRouteChildren = {
   AppAudioRoute: AppAudioRoute,
   AppBookRoute: AppBookRoute,
   AppChronicRoute: AppChronicRoute,
@@ -855,6 +869,16 @@ const rootRouteChildren: RootRouteChildren = {
   AppUsRoute: AppUsRoute,
   AppVerifyRoute: AppVerifyRoute,
   AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
+const rootRouteChildren: RootRouteChildren = {
+  AppRoute: AppRouteWithChildren,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  LoginRoute: LoginRoute,
+  RegisterRoute: RegisterRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
