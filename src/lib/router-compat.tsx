@@ -22,17 +22,21 @@ export const Link = React.forwardRef<HTMLAnchorElement, AnyProps>(
 Link.displayName = "Link";
 
 export const NavLink = React.forwardRef<HTMLAnchorElement, AnyProps>(
-  ({ to, className, children, ...rest }, ref) => {
+  ({ to, className, children, end, caseSensitive, ...rest }, ref) => {
     const target = typeof to === "string" ? to : (to?.pathname ?? "/");
-    const classFn = (state: any) =>
-      typeof className === "function"
-        ? className({ isActive: state?.isActive, isPending: false })
-        : className;
+    const pathname = useRouterState({ select: (s) => s.location.pathname });
+    const isActive = end
+      ? pathname === target
+      : pathname === target || pathname.startsWith(`${target.replace(/\/$/, "")}/`);
+    const state = { isActive, isPending: false, isTransitioning: false };
     return (
-      <TanstackLink ref={ref as any} to={target} {...rest} className={classFn as any}>
-        {typeof children === "function"
-          ? (children as any)({ isActive: false, isPending: false })
-          : children}
+      <TanstackLink
+        ref={ref as any}
+        to={target}
+        {...rest}
+        className={typeof className === "function" ? className(state) : className}
+      >
+        {typeof children === "function" ? (children as any)(state) : children}
       </TanstackLink>
     );
   },

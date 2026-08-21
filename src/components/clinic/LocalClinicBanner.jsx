@@ -9,7 +9,7 @@ export default function LocalClinicBanner() {
   const local = isLocalClinicSession({ appId: appParams.appId, token: appParams.token });
   if (!local) return null;
   return (
-    <div className="no-print bg-cyan-50 border-b border-cyan-100 text-cyan-950">
+    <div className="no-print bg-primary text-primary-foreground">
       <div className="clinic-wrap py-1.5 flex items-center gap-2 text-[11px] font-medium">
         <Monitor className="w-3.5 h-3.5 shrink-0" />
         <span>{t("clinic.local_banner")}</span>

@@ -13,21 +13,21 @@ export default function BottomNav() {
   ];
 
   return (
-    <nav className="fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur-lg border-t border-slate-200 safe-bottom select-none">
-      <div className="max-w-5xl mx-auto grid grid-cols-4">
+    <nav className="no-print fixed bottom-0 inset-x-0 z-30 safe-bottom select-none px-3 pb-3 pointer-events-none">
+      <div className="pointer-events-auto max-w-md mx-auto grid grid-cols-4 gap-1 rounded-full bg-ink p-1.5 shadow-[0_18px_40px_-20px_rgba(0,0,0,0.7)]">
         {tabs.map(({ to, label, icon: Icon, end }) => (
           <NavLink
             key={to}
             to={to}
             end={end}
             className={({ isActive }) =>
-              `flex flex-col items-center justify-center gap-1 py-2.5 transition-colors ${
-                isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+              `flex flex-col items-center justify-center gap-0.5 rounded-full py-2 transition-colors ${
+                isActive ? "bg-primary text-primary-foreground" : "text-background/60 hover:text-background"
               }`
             }
           >
-            <Icon className="w-5 h-5" />
-            <span className="text-[10px] font-medium">{label}</span>
+            <Icon className="w-[18px] h-[18px]" />
+            <span className="text-[10px] font-bold">{label}</span>
           </NavLink>
         ))}
       </div>
