@@ -6,9 +6,9 @@ export function GlassCard({
   children,
   glow,
 }: {
-  className?: string;
+  className?: string | undefined;
   children: ReactNode;
-  glow?: "blue" | "violet" | "pink" | "amber" | "mint";
+  glow?: "blue" | "violet" | "pink" | "amber" | "mint" | undefined;
 }) {
   return (
     <div className={cn("glass-card", glow && `glow-${glow}`, className)}>
@@ -36,8 +36,8 @@ export function StatTile({
 }: {
   label: string;
   value: string;
-  sub?: string;
-  glow?: "blue" | "violet" | "pink" | "amber" | "mint";
+  sub?: string | undefined;
+  glow?: "blue" | "violet" | "pink" | "amber" | "mint" | undefined;
 }) {
   return (
     <GlassCard glow={glow} className="p-5">
