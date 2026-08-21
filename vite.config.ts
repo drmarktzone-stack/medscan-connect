@@ -5,6 +5,7 @@
 //     React/TanStack dedupe, error logger plugins, and sandbox detection (port/host/strictPort).
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { fileURLToPath } from "node:url";
 
 export default defineConfig({
   tanstackStart: {
@@ -12,4 +13,16 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    resolve: {
+      alias: {
+        // Compatibility shim for legacy pages written against react-router-dom.
+        // TanStack Router is still the only router.
+        "react-router-dom": fileURLToPath(
+          new URL("./src/lib/router-compat.tsx", import.meta.url),
+        ),
+      },
+    },
+  },
 });
+
