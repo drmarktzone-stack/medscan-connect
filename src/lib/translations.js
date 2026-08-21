@@ -20,7 +20,7 @@ export const translations = {
     "mod.metabolic": "מטבולי",
     "mod.toxicology": "טוקסיקולוגיה",
     "mod.milestones": "אבני דרך ותזונה",
-    "mod.ecg": "אק"ג",
+    "mod.ecg": "אק״ג",
     "mod.eeg": "EEG",
     "mod.trauma": "טראומה",
     "mod.triads": "תסמונות",
