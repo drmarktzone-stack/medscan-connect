@@ -241,6 +241,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      owns_patient: { Args: { _patient_id: string }; Returns: boolean }
     }
     Enums: {
       app_role: "clinician" | "parent"
