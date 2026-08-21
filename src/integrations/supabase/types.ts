@@ -62,6 +62,7 @@ export type Database = {
       encounters: {
         Row: {
           created_at: string
+          created_by: string | null
           dir: string
           encounter_type: string
           engines_run: Json
@@ -75,6 +76,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          created_by?: string | null
           dir?: string
           encounter_type: string
           engines_run?: Json
@@ -88,6 +90,7 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          created_by?: string | null
           dir?: string
           encounter_type?: string
           engines_run?: Json
@@ -112,6 +115,7 @@ export type Database = {
       patients: {
         Row: {
           birth_date: string | null
+          clinician_org_id: string | null
           created_at: string
           dir: string
           display_name: string | null
@@ -119,11 +123,13 @@ export type Database = {
           height_cm: number | null
           id: string
           locale: string
+          parent_user_id: string | null
           sex: string | null
           weight_kg: number | null
         }
         Insert: {
           birth_date?: string | null
+          clinician_org_id?: string | null
           created_at?: string
           dir?: string
           display_name?: string | null
@@ -131,11 +137,13 @@ export type Database = {
           height_cm?: number | null
           id?: string
           locale?: string
+          parent_user_id?: string | null
           sex?: string | null
           weight_kg?: number | null
         }
         Update: {
           birth_date?: string | null
+          clinician_org_id?: string | null
           created_at?: string
           dir?: string
           display_name?: string | null
@@ -143,6 +151,7 @@ export type Database = {
           height_cm?: number | null
           id?: string
           locale?: string
+          parent_user_id?: string | null
           sex?: string | null
           weight_kg?: number | null
         }
