@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { Activity, Baby, Brain, LayoutGrid, Stethoscope } from "lucide-react";
+import { Activity, Baby, Brain, HeartHandshake, LayoutGrid, Stethoscope } from "lucide-react";
 
 const nav = [
-  { to: "/", label: "סקירה", icon: LayoutGrid },
+  { to: "/", label: "שולחן קליני", icon: LayoutGrid },
+  { to: "/parent", label: "פורטל הורים", icon: HeartHandshake },
   { to: "/patients", label: "מטופלים", icon: Baby },
   { to: "/cases", label: "מקרים", icon: Activity },
   { to: "/assistant", label: "עוזר AI", icon: Brain },
@@ -27,10 +28,10 @@ export function AppShell({ children }: { children: ReactNode }) {
               key={to}
               to={to}
               activeOptions={{ exact: to === "/" }}
-              className="flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-white/10 hover:text-foreground"
+              className="flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-white/60 hover:text-foreground"
               activeProps={{
                 className:
-                  "flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-medium bg-white/15 text-foreground shadow-[inset_0_1px_0_0_rgba(255,255,255,0.35)]",
+                  "flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-medium bg-white/75 text-foreground shadow-[inset_0_1px_0_0_rgba(255,255,255,0.35)]",
               }}
             >
               <Icon className="size-4" />
