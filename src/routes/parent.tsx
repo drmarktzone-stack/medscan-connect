@@ -1,12 +1,13 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
+import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { AlertTriangle, ArrowLeft, CheckCircle2, HeartHandshake, Loader2, RotateCcw, ShieldCheck } from "lucide-react";
 import { AppShell } from "@/components/AppShell";
 import { GlassCard, Pill } from "@/components/glass";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
-import { saveDoctorPedEncounter } from "@/lib/doctorped.functions";
+import { getDoctorPedData, saveDoctorPedEncounter } from "@/lib/doctorped.functions";
 import { runDoctorPedAI } from "@/lib/medscan/doctorped/index.js";
 
 export const Route = createFileRoute("/parent")({
@@ -45,7 +46,9 @@ const urgencyCopy = {
 function ParentPortal() {
   const navigate = useNavigate();
   const { user, role, loading: authLoading } = useAuth();
+  const getData = useServerFn(getDoctorPedData);
   const saveEncounter = useServerFn(saveDoctorPedEncounter);
+  const familyData = useQuery({ queryKey: ["parent-data", user?.id], queryFn: () => getData(), enabled: Boolean(user) });
   const [step, setStep] = useState(0);
   const [ageMonths, setAgeMonths] = useState("");
   const [selected, setSelected] = useState<string[]>([]);
@@ -61,11 +64,12 @@ function ParentPortal() {
     const next = runDoctorPedAI({ persona: "parent", integrationMode: "unified", patient: { age_months: Number(ageMonths) }, findings: selected, presentation: selected.join(", "), proceed: true, locale: "he", mode: "development" }) as ParentResult;
     setResult(next);
     setStep(2);
-    if (!user || role !== "parent" || !next.triage?.urgency) return;
+    const linkedPatient = familyData.data?.patients[0];
+    if (!user || role !== "parent" || !next.triage?.urgency || !linkedPatient) return;
     setSaving(true);
     try {
       await saveEncounter({ data: {
-        patient_id: null, locale: "he", dir: "rtl", rls_role: "parent", encounter_type: "previsit",
+        patient_id: linkedPatient.id, locale: "he", dir: "rtl", rls_role: "parent", encounter_type: "previsit",
         triage_urgency: next.triage.urgency, engines_run: next.engines_run ?? [],
         output_summary: { ok: next.ok ?? false, emergency: next.emergency ?? false, symptoms: selected },
         verification_status: "draft_needs_verification",
@@ -87,6 +91,7 @@ function ParentPortal() {
           <Pill tone="low"><HeartHandshake className="size-3" /> פורטל המשפחה</Pill>
           <h1 className="mt-4 text-3xl font-semibold">מה עובר על הילד/ה?</h1>
           <p className="mt-2 text-sm leading-6 text-muted-foreground">כמה שאלות קצרות יעזרו לבחור את רמת הדחיפות. לא נציג אבחנה או מינוני תרופות.</p>
+          {role === "parent" && familyData.data && !familyData.data.patients.length ? <p className="mt-3 rounded-xl border border-border bg-background/45 p-3 text-xs text-muted-foreground">החשבון עדיין אינו מקושר לילד/ה. אפשר לבצע את האשף, אך התקציר לא יישמר עד שהמרפאה תשלים את הקישור.</p> : null}
           <div className="mt-5 flex gap-2">{[0, 1, 2].map((item) => <span key={item} className={item <= step ? "h-2 flex-1 rounded-full bg-primary" : "h-2 flex-1 rounded-full bg-muted"} />)}</div>
         </GlassCard>
 
