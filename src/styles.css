@@ -162,7 +162,7 @@
 }
 
 @theme inline {
-  --font-sans: "SF Pro Display", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Heebo", "SF Pro Display", ui-sans-serif, system-ui, sans-serif;
   --color-aurora-blue: var(--aurora-blue);
   --color-aurora-violet: var(--aurora-violet);
   --color-aurora-pink: var(--aurora-pink);
@@ -180,6 +180,7 @@
   }
 
   body {
+    font-family: var(--font-sans);
     background-color: var(--color-background);
     color: var(--color-foreground);
     background-image:
