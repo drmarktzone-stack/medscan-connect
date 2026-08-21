@@ -19,6 +19,10 @@
  */
 
 @theme inline {
+  --font-sans: "Heebo", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Heebo", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Heebo", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Heebo", ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -62,39 +66,39 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --radius: 0.9rem;
+  --background: hsl(204 36% 97%);
+  --foreground: hsl(210 29% 14%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(210 29% 14%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(210 29% 14%);
+  --primary: hsl(192 72% 28%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(204 30% 94%);
+  --secondary-foreground: hsl(210 29% 14%);
+  --muted: hsl(204 20% 95%);
+  --muted-foreground: hsl(210 12% 40%);
+  --accent: hsl(174 48% 36%);
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(0 72% 48%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(204 18% 88%);
+  --input: hsl(204 18% 88%);
+  --ring: hsl(192 72% 28%);
+  --chart-1: hsl(192 72% 28%);
+  --chart-2: hsl(174 48% 36%);
+  --chart-3: hsl(340 65% 45%);
+  --chart-4: hsl(43 74% 56%);
+  --chart-5: hsl(27 87% 50%);
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
 
 .dark {
@@ -140,5 +144,65 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+  }
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@utility clinic-page {
+  min-height: 100vh;
+  background-color: hsl(204 36% 97%);
+}
+
+@utility clinic-wrap {
+  max-width: 64rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@utility clinic-card {
+  background-color: #fff;
+  border-radius: 1rem;
+  border: 1px solid hsl(214 20% 91% / 0.9);
+  box-shadow: 0 8px 24px -18px rgba(15, 23, 42, 0.35);
+}
+
+@utility clinic-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: hsl(215 16% 47%);
+  margin-bottom: 0.25rem;
+}
+
+@utility safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+@utility safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media print {
+  nav,
+  header,
+  .no-print,
+  .safe-bottom {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+  body,
+  .clinic-page {
+    background: #fff !important;
+  }
+  #clinic-draft-print {
+    box-shadow: none !important;
   }
 }
