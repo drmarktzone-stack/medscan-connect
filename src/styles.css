@@ -162,7 +162,7 @@
 
 @utility clinic-page {
   min-height: 100vh;
-  background-color: hsl(204 36% 97%);
+  background-color: var(--background);
 }
 
 @utility clinic-wrap {
@@ -172,18 +172,43 @@
 }
 
 @utility clinic-card {
-  background-color: #fff;
-  border-radius: 1rem;
-  border: 1px solid hsl(214 20% 91% / 0.9);
-  box-shadow: 0 8px 24px -18px rgba(15, 23, 42, 0.35);
+  background-color: var(--card);
+  border-radius: 1.5rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px -24px rgba(0, 0, 0, 0.5);
 }
 
 @utility clinic-label {
   display: block;
   font-size: 11px;
-  font-weight: 600;
-  color: hsl(215 16% 47%);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--muted-foreground);
   margin-bottom: 0.25rem;
+}
+
+@utility pilo-ink-card {
+  background-color: var(--ink);
+  color: hsl(0 0% 98%);
+  border-radius: 1.75rem;
+}
+
+@utility pilo-lime-card {
+  background-color: var(--lime);
+  color: var(--ink);
+  border-radius: 1.75rem;
+}
+
+@utility pilo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  border-radius: 9999px;
+  background-color: var(--ink);
+  color: hsl(0 0% 98%);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0.3rem 0.75rem;
 }
 
 @utility safe-top {
