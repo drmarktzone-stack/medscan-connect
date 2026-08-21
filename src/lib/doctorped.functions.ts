@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import type { Json } from "@/integrations/supabase/types";
 
 export const getDoctorPedData = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
@@ -57,7 +58,7 @@ const encounterInput = z.object({
   rls_role: z.enum(["clinician", "parent"]),
   encounter_type: z.enum(["clinician", "previsit"]),
   triage_urgency: z.enum(["emergency", "hmo_visit", "home_care"]).nullable(),
-  engines_run: z.array(z.unknown()),
+  engines_run: z.array(z.record(z.string(), z.unknown())),
   output_summary: z.record(z.string(), z.unknown()),
   verification_status: z.literal("draft_needs_verification"),
 });
@@ -76,7 +77,7 @@ export const saveDoctorPedEncounter = createServerFn({ method: "POST" })
 
     const { data: saved, error } = await context.supabase
       .from("encounters")
-      .insert(data)
+      .insert({ ...data, engines_run: data.engines_run as Json, output_summary: data.output_summary as Json })
       .select("id")
       .single();
     if (error) throw new Error(error.message);

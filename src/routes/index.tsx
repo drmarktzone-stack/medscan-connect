@@ -1,43 +1,26 @@
-import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
-import { AppShell } from "@/components/AppShell";
-import { PatientRail } from "@/components/workbench/PatientRail";
-import { ClinicalAnalysis } from "@/components/workbench/ClinicalAnalysis";
-import { MedScanRail } from "@/components/workbench/MedScanRail";
-import { clinicalPatients } from "@/lib/clinical-data";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { Loader2 } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Clinician Workbench — DoctorPedAI" },
-      {
-        name: "description",
-        content:
-          "שולחן עבודה קליני ברפואת ילדים: מדדים חיוניים, עקומות גדילה, דגלים אדומים, אבחנות מבדלות, מחשבון מינונים ומודולי MedScan.",
-      },
-      { property: "og:title", content: "Clinician Workbench — DoctorPedAI" },
-      {
-        property: "og:description",
-        content: "ניתוח קליני עמוק, דגלים אדומים ומחשבון מינונים mg/kg לרפואת ילדים.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: Workbench,
+  head: () => ({ meta: [
+    { title: "DoctorPedAI — תמיכת החלטה ברפואת ילדים" },
+    { name: "description", content: "פלטפורמת MedScan מאובטחת לתמיכה בהחלטות קליניות ברפואת ילדים." },
+    { property: "og:title", content: "DoctorPedAI" },
+    { property: "og:description", content: "תמיכת החלטה קלינית מתקדמת ברפואת ילדים." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
+  ] }),
+  component: EntryRoute,
 });
 
-function Workbench() {
-  const [patientId, setPatientId] = useState(clinicalPatients[0]!.id);
-  const patient = clinicalPatients.find((p) => p.id === patientId)!;
-
-  return (
-    <AppShell>
-      <div className="grid gap-4 xl:grid-cols-[20rem_minmax(0,1fr)_22rem]">
-        <PatientRail patient={patient} onSelect={setPatientId} />
-        <ClinicalAnalysis patient={patient} />
-        <MedScanRail />
-      </div>
-    </AppShell>
-  );
+function EntryRoute() {
+  const { user, role, loading } = useAuth();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (loading) return;
+    void navigate({ to: !user ? "/auth" : role === "clinician" ? "/doctorped" : "/parent", replace: true });
+  }, [loading, navigate, role, user]);
+  return <main className="flex min-h-screen items-center justify-center"><Loader2 className="size-7 animate-spin text-primary" /><span className="sr-only">טוען</span></main>;
 }

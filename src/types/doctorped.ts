@@ -15,6 +15,7 @@ export type QuestionnaireResponseInsert =
   Tables["questionnaire_responses"]["Insert"];
 
 export type UserRole = Tables["user_roles"]["Row"];
+export type DoseRecord = Tables["dose_records"]["Row"];
 
 export type Locale = "he" | "en" | "ar";
 export type Dir = "rtl" | "ltr";
