@@ -24,17 +24,12 @@ Link.displayName = "Link";
 export const NavLink = React.forwardRef<HTMLAnchorElement, AnyProps>(
   ({ to, className, children, ...rest }, ref) => {
     const target = typeof to === "string" ? to : (to?.pathname ?? "/");
+    const classFn = (state: any) =>
+      typeof className === "function"
+        ? className({ isActive: state?.isActive, isPending: false })
+        : className;
     return (
-      <TanstackLink
-        ref={ref as any}
-        to={target}
-        {...rest}
-        className={(state: any) =>
-          typeof className === "function"
-            ? className({ isActive: state.isActive, isPending: false })
-            : className
-        }
-      >
+      <TanstackLink ref={ref as any} to={target} {...rest} className={classFn as any}>
         {typeof children === "function"
           ? (children as any)({ isActive: false, isPending: false })
           : children}
@@ -42,6 +37,7 @@ export const NavLink = React.forwardRef<HTMLAnchorElement, AnyProps>(
     );
   },
 );
+
 NavLink.displayName = "NavLink";
 
 export const Outlet = TanstackOutlet;
