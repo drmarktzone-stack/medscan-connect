@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { Activity, Baby, Brain, LayoutGrid, Stethoscope } from "lucide-react";
+import { Activity, Baby, Brain, HeartHandshake, LayoutGrid, Stethoscope } from "lucide-react";
 
 const nav = [
-  { to: "/", label: "סקירה", icon: LayoutGrid },
+  { to: "/", label: "שולחן קליני", icon: LayoutGrid },
+  { to: "/parent", label: "פורטל הורים", icon: HeartHandshake },
   { to: "/patients", label: "מטופלים", icon: Baby },
   { to: "/cases", label: "מקרים", icon: Activity },
   { to: "/assistant", label: "עוזר AI", icon: Brain },

@@ -25,7 +25,7 @@ export const Route = createFileRoute("/parent")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: ParentPortal;
+  component: ParentPortal,
 });
 
 function ParentPortal() {
