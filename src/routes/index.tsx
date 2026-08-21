@@ -115,7 +115,7 @@ function Dashboard() {
                 <div key={d.label} className="flex h-full flex-1 flex-col items-center justify-end gap-2">
                   <div
                     className="w-full min-h-2 rounded-t-xl border border-border bg-linear-to-t from-aurora-blue/40 via-aurora-violet/70 to-aurora-pink/90 backdrop-blur-xl"
-                    style={{ height: `${Math.round((d.value / max) * 88)}%` }}
+                    style={{ height: `${Math.max(10, Math.round((d.value / max) * 180))}px` }}
                   />
                   <span className="text-xs text-muted-foreground">{d.label}</span>
                 </div>
