@@ -14,16 +14,182 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      encounters: {
+        Row: {
+          created_at: string
+          dir: string
+          encounter_type: string
+          engines_run: Json
+          id: string
+          locale: string
+          output_summary: Json | null
+          patient_id: string | null
+          rls_role: string
+          triage_urgency: string | null
+          verification_status: string
+        }
+        Insert: {
+          created_at?: string
+          dir?: string
+          encounter_type: string
+          engines_run?: Json
+          id?: string
+          locale?: string
+          output_summary?: Json | null
+          patient_id?: string | null
+          rls_role: string
+          triage_urgency?: string | null
+          verification_status?: string
+        }
+        Update: {
+          created_at?: string
+          dir?: string
+          encounter_type?: string
+          engines_run?: Json
+          id?: string
+          locale?: string
+          output_summary?: Json | null
+          patient_id?: string | null
+          rls_role?: string
+          triage_urgency?: string | null
+          verification_status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "encounters_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      patients: {
+        Row: {
+          birth_date: string | null
+          created_at: string
+          dir: string
+          display_name: string | null
+          guardian_user_id: string | null
+          height_cm: number | null
+          id: string
+          locale: string
+          sex: string | null
+          weight_kg: number | null
+        }
+        Insert: {
+          birth_date?: string | null
+          created_at?: string
+          dir?: string
+          display_name?: string | null
+          guardian_user_id?: string | null
+          height_cm?: number | null
+          id?: string
+          locale?: string
+          sex?: string | null
+          weight_kg?: number | null
+        }
+        Update: {
+          birth_date?: string | null
+          created_at?: string
+          dir?: string
+          display_name?: string | null
+          guardian_user_id?: string | null
+          height_cm?: number | null
+          id?: string
+          locale?: string
+          sex?: string | null
+          weight_kg?: number | null
+        }
+        Relationships: []
+      }
+      questionnaire_responses: {
+        Row: {
+          created_at: string
+          dir: string
+          encounter_id: string | null
+          id: string
+          instrument: string
+          locale: string
+          patient_id: string | null
+          payload: Json
+          rls_role: string
+        }
+        Insert: {
+          created_at?: string
+          dir?: string
+          encounter_id?: string | null
+          id?: string
+          instrument: string
+          locale?: string
+          patient_id?: string | null
+          payload?: Json
+          rls_role: string
+        }
+        Update: {
+          created_at?: string
+          dir?: string
+          encounter_id?: string | null
+          id?: string
+          instrument?: string
+          locale?: string
+          patient_id?: string | null
+          payload?: Json
+          rls_role?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "questionnaire_responses_encounter_id_fkey"
+            columns: ["encounter_id"]
+            isOneToOne: false
+            referencedRelation: "encounters"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "questionnaire_responses_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "clinician" | "parent"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +316,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["clinician", "parent"],
+    },
   },
 } as const
