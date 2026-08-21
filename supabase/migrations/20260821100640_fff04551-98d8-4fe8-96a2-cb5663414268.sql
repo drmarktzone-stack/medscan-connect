@@ -1,0 +1,1 @@
+insert into public.user_roles (user_id, role) values ('48a59891-1648-4f6a-a157-53a92c3f8401','clinician') on conflict (user_id, role) do nothing;
