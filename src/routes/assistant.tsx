@@ -95,7 +95,7 @@ function AssistantPage() {
             </div>
           ) : (
             <p className="mt-4 text-sm text-muted-foreground">
-              עדיין לא בוצע ניתוח. הזינו תמונה קלינית משמאל.
+              עדיין לא בוצע ניתוח. הזינו תמונה קלינית בשדה שלצד.
             </p>
           )}
         </GlassCard>
