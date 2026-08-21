@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      dose_records: {
+        Row: {
+          created_at: string
+          doses_per_day: number | null
+          drug_key: string
+          drug_name_he: string | null
+          id: string
+          max_mg_per_day: number | null
+          max_mg_per_dose: number | null
+          mg_per_kg_per_dose: number | null
+          min_age_days: number | null
+          source: string | null
+          updated_at: string
+          verification_status: string
+        }
+        Insert: {
+          created_at?: string
+          doses_per_day?: number | null
+          drug_key: string
+          drug_name_he?: string | null
+          id?: string
+          max_mg_per_day?: number | null
+          max_mg_per_dose?: number | null
+          mg_per_kg_per_dose?: number | null
+          min_age_days?: number | null
+          source?: string | null
+          updated_at?: string
+          verification_status?: string
+        }
+        Update: {
+          created_at?: string
+          doses_per_day?: number | null
+          drug_key?: string
+          drug_name_he?: string | null
+          id?: string
+          max_mg_per_day?: number | null
+          max_mg_per_dose?: number | null
+          mg_per_kg_per_dose?: number | null
+          min_age_days?: number | null
+          source?: string | null
+          updated_at?: string
+          verification_status?: string
+        }
+        Relationships: []
+      }
       encounters: {
         Row: {
           created_at: string
